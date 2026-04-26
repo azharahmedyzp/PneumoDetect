@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneumoDetect | Smart Radiography</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-lungs-virus"></i>
+                <span>PneumoDetect</span>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="glass-card" id="main-card">
+                <!-- Upload State -->
+                <div class="state-content" id="upload-state">
+                    <div class="hero-text">
+                        <h1>Smart Pneumonia Detection</h1>
+                        <p>Upload a chest X-ray for an instant AI-powered analysis.</p>
+                    </div>
+
+                    <div class="upload-box" id="drop-zone">
+                        <div class="upload-icon">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <h3>Drop your scan here</h3>
+                        <p>Supports JPG, PNG, and DICOM</p>
+                        <button class="btn-primary">
+                            Browse Files
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis State (Hidden) -->
+                <div class="state-content" id="analysis-state" style="display: none;">
+                    <div class="preview-area">
+                        <img id="preview-img" src="" alt="Scan Preview">
+                        <div class="scan-bar"></div>
+                    </div>
+
+                    <div class="analysis-info">
+                        <div class="loader-container">
+                            <div class="spinner"></div>
+                            <h2 id="status-text" class="pulse-text">Analyzing Radiograph...</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results State (Hidden) -->
+                <div class="state-content" id="result-state" style="display: none;">
+                    <div class="result-header">
+                        <div class="result-icon" id="result-icon">
+                            <i class="fa-solid fa-check-circle"></i>
+                        </div>
+                        <h2 id="prediction-text">Normal</h2>
+                        <p id="confidence-text">98% Confidence</p>
+                    </div>
+
+                    <div class="result-details">
+                        <div class="prob-row">
+                            <span>Pneumonia Probability</span>
+                            <div class="progress-bg">
+                                <div class="progress-fill" id="fill-p"></div>
+                            </div>
+                            <span class="val" id="val-p">0%</span>
+                        </div>
+                        <div class="prob-row">
+                            <span>Normal Probability</span>
+                            <div class="progress-bg">
+                                <div class="progress-fill" id="fill-n"></div>
+                            </div>
+                            <span class="val" id="val-n">0%</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-secondary" id="reset-btn">
+                        <i class="fa-solid fa-arrow-left"></i> Analyze Another Scan
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 PneumoDetect by Azhar Ahmed. For Educational Purposes Only.</p>
+        </footer>
+    </div>
+
+    <input type="file" id="file-input" hidden accept="image/*">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

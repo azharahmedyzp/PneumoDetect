@@ -1,0 +1,4 @@
+.venv/
+__pycache__/
+*.pyc
+Pneumunia_Images_for_Demo/
